@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+cat >> .gitignore << 'EOF'
+
+# IDE specific files
+.gigaide/
+*.DS_Store
+.DS_Store
