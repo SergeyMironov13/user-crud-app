@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.netology.user_crud_app.model.User;
 import ru.netology.user_crud_app.repository.UserRepository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -95,5 +97,14 @@ public class UserController {
 
         userRepository.deleteById(id);
         return ResponseEntity.ok("Пользователь успешно удалён");
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<Map<String, String>> health() {
+        Map<String, String> status = new HashMap<>();
+        status.put("status", "UP");
+        status.put("message", "Service is running");
+        status.put("public", "This endpoint is accessible without authentication");
+        return ResponseEntity.ok(status);
     }
 }

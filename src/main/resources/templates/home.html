@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User CRUD API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 { color: #667eea; }
+        .endpoint {
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .public { color: green; }
+        .private { color: red; }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>User CRUD API</h1>
+<p>Добро пожаловать в систему управления пользователями!</p>
+
+<h2>Доступные endpoint:</h2>
+
+<div class="endpoint">
+    <strong class="public">🔓 Публичный (без авторизации):</strong><br/>
+    GET /api/users/search/name?name={name} - Поиск пользователей по имени
+</div>
+
+<div class="endpoint">
+    <strong class="private">🔒 Требует авторизации:</strong><br/>
+    POST /api/users - Создать пользователя<br/>
+    GET /api/users - Получить всех пользователей<br/>
+    GET /api/users/{id} - Получить пользователя по ID<br/>
+    PUT /api/users/{id} - Обновить пользователя<br/>
+    DELETE /api/users/{id} - Удалить пользователя<br/>
+    DELETE /api/users - Удалить всех пользователей
+</div>
+
+<h2>Примеры запросов:</h2>
+
+<h3>Публичный запрос (без авторизации):</h3>
+<pre>curl "http://localhost:8080/api/users/search/name?name=Ivan"</pre>
+
+<h3>Запрос с авторизацией:</h3>
+<pre>curl -u user:password http://localhost:8080/api/users</pre>
+
+<p><a href="/login">Войти в систему</a> | <a href="/logout">Выйти</a></p>
+</body>
+</html>
